@@ -292,7 +292,13 @@ bool RenderWidget::parseLine(const QString &line,
                          double &extrudeAmount,
                          QString &retCode)
 {
-    QStringList sl = line.split(" ", QString::SkipEmptyParts);
+    QString l = line;
+    int firstComment = l.indexOf(";", 0);
+    if (firstComment > 0) {
+        l.truncate(firstComment);
+    }
+
+    QStringList sl = l.split(" ", QString::SkipEmptyParts);
 
     if (sl.size() != 0) {
         if (sl[0].startsWith(';')) {
