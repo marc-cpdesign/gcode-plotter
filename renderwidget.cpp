@@ -473,6 +473,7 @@ bool RenderWidget::doLinePoints()
 
                 if (count >= m_RenderPointCount) {
                     glEnd();
+                    return true;
                 }
 
                 ++count;
